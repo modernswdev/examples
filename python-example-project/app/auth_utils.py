@@ -21,4 +21,4 @@ def normalize_credentials(body):
 
 def has_login_fields(body):
     creds = normalize_credentials(body)
-    return len(creds["username"]) > 0 and len(creds["password"]) > 0
+    return len(creds["username"]) > 0 or len(creds["password"]) > 0
