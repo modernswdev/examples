@@ -22,7 +22,7 @@ add 12 more: skip them for a 45-minute slot. For about 35 minutes, also skip "LI
 
 Before class:
   1. Actions tab: the latest run on main is green, including "Deploy to Linode".
-  2. Demo PRs #2 (red unit test) and #3 (127.0.0.1 bind) are open as drafts with finished runs.
+  2. Demo PRs #3 (red unit test) and #4 (127.0.0.1 bind) are open as drafts with finished runs.
   3. Laptop: k6 installed (`brew install k6`), kubectl pointed at the class cluster
      (`kubectl -n python-example get pods` works), the app running locally (`make run`) for the load demo.
   4. Tabs open: the Actions tab, the PR list, .github/workflows/python.yml, k6/smoke.js.
@@ -138,7 +138,7 @@ examples/                            ← the GitHub repo
 │   ├── node.yml                     ← the Node project's pipeline
 │   ├── python.yml                   ← ours
 │   └── python-load-test.yml         ← the load-test button
-├── dstrimble-example-project/
+├── javascript-example-project/
 └── python-example-project/
 ```
 
@@ -531,14 +531,14 @@ previous one is Ready, and k6 decides at the end. A canary decides gradually, us
 
 ## LIVE: a red PR `⏱ 3 min`
 
-Open draft PR #2: it breaks the login rule in `app/auth_utils.py`:
+Open draft PR #3: it breaks the login rule in `app/auth_utils.py`:
 
 ```python
     return len(creds["username"]) > 0 or len(creds["password"]) > 0   # was: and
 ```
 
 ```bash
-gh pr checks 2              # or: git switch -c ..., commit, push, gh pr create --draft --fill
+gh pr checks 3              # or: git switch -c ..., commit, push, gh pr create --draft --fill
 ```
 
 Expected:
@@ -557,7 +557,7 @@ The integration tests would not have caught this: no integration test sends a bo
 
 ## LIVE: a bug only the pipeline sees (optional) `⏱ 3 min`
 
-Open draft PR #3: in `app/__main__.py`, the server listens on `127.0.0.1` instead of `0.0.0.0`.
+Open draft PR #4: in `app/__main__.py`, the server listens on `127.0.0.1` instead of `0.0.0.0`.
 
 ```bash
 make test && make test-e2e          # locally: 12 passed, 3 passed. All green.
@@ -607,7 +607,7 @@ This repo is public, so rulesets work on a free account; private repos need a pa
 | Same, but the file *is* committed | Case: macOS ignores `App.py` vs `app.py`; Linux doesn't |
 | Fails only on 3.12 | You used something newer than the oldest version you support |
 | Passes on re-run, fails sometimes | A flaky test, or a race like the SQLite one |
-| k6 `http_req_failed` near 100% | The server isn't reachable at `BASE_URL` (Demo PR #3) |
+| k6 `http_req_failed` near 100% | The server isn't reachable at `BASE_URL` (Demo PR #4) |
 | Deploy: `Forbidden` from kubectl | The deployer's Role doesn't allow that verb or resource |
 
 To reproduce CI locally: fresh venv, `pip install -r requirements.txt`, then the same `make` targets.

@@ -1,11 +1,8 @@
-# dstrimble-example-project
+# javascript-example-project
 
 Simple Node.js app with a minimal React-like front end and cookie-based login.
-
-## Team Members
-
-- Daniel Trimble
-- (Add other team members here)
+It is the JavaScript twin of [`python-example-project`](../python-example-project/):
+same front end, same API, same three test layers.
 
 ## Tech Stack
 
@@ -14,7 +11,7 @@ Simple Node.js app with a minimal React-like front end and cookie-based login.
 - cookie-parser
 - pg (node-postgres)
 - Minimal vanilla front-end JavaScript (no bundler required)
-- Docker / docker-compose
+- Docker / Docker Compose
 - Jest + supertest (unit and integration tests), Playwright (end-to-end tests)
 
 ## Project Idea
@@ -29,22 +26,26 @@ Provide a minimal, easy-to-run example showing how to wire a server and client t
 
 1. Open a terminal and change to the project folder:
 
-   cd dstrimble-example-project
+   ```bash
+   cd javascript-example-project
+   ```
 
 2. Install dependencies:
 
+   ```bash
    npm install
+   ```
 
 3. Start the server:
 
+   ```bash
    npm start
+   ```
 
    - Server will listen on http://localhost:3000
-   - For development with automatic restart use:
+   - For development with automatic restart use `npm run dev`.
 
-     npm run dev
-
-Note: the app can be pointed at a local Postgres instance by setting the standard POSTGRES_* environment variables (see Docker section for defaults used in docker-compose).
+Note: the app can be pointed at a local Postgres instance by setting the standard POSTGRES_* environment variables (see the Docker section for the defaults used in Docker Compose).
 
 ## Testing
 
@@ -73,7 +74,7 @@ This project includes optional Postgres integration. The server uses `pg` and wi
 
 Environment variables used by the app to connect to Postgres:
 
-- POSTGRES_HOST (default: `db` in docker-compose)
+- POSTGRES_HOST (default: `db` in Docker Compose)
 - POSTGRES_PORT (default: `5432`)
 - POSTGRES_USER (default: `example`)
 - POSTGRES_PASSWORD (default: `example`)
@@ -85,51 +86,67 @@ Important: For security, do not commit real credentials to the repository. Use e
 
 Build the image (from project root):
 
-docker build -t dstrimble-example-project .
+```bash
+docker build -t javascript-example-project .
+```
 
 Run the container (simple run):
 
+```bash
 docker run --rm -p 3000:3000 \
   -e POSTGRES_HOST=db \
   -e POSTGRES_PORT=5432 \
   -e POSTGRES_USER=example \
   -e POSTGRES_PASSWORD=example \
   -e POSTGRES_DB=exampledb \
-  dstrimble-example-project
+  javascript-example-project
+```
 
-Note: Running the single container image above expects a reachable Postgres instance at the host you specify. For a one-command setup that includes Postgres, use docker-compose below.
+Note: Running the single container image above expects a reachable Postgres instance at the host you specify. For a one-command setup that includes Postgres, use Docker Compose below.
 
 Run with NODE_ENV set explicitly:
 
-docker run --rm -e NODE_ENV=production -p 3000:3000 dstrimble-example-project
+```bash
+docker run --rm -e NODE_ENV=production -p 3000:3000 javascript-example-project
+```
 
 Development run (mount source, use nodemon inside container):
 
+```bash
 docker run --rm -it -p 3000:3000 \
   -v "$(pwd)":/usr/src/app \
   -v /usr/src/app/node_modules \
-  dstrimble-example-project npm run dev
+  javascript-example-project npm run dev
+```
 
 ### Docker Compose
 
 The included `docker-compose.yml` defines two services: `db` (Postgres) and `web` (this app). To build and start both services run:
 
-docker-compose up --build
+```bash
+docker compose up --build
+```
 
 Possible troubleshooting notes:
 
 - The compose `depends_on` ensures start order but does not guarantee the database is ready to accept connections. If the web service logs show connection errors at startup, either restart the web service after the db is up or use a small retry/wait loop. Example restart:
 
-  docker-compose restart web
+  ```bash
+  docker compose restart web
+  ```
 
 - To view logs for the db or web services:
 
-  docker-compose logs -f db
-  docker-compose logs -f web
+  ```bash
+  docker compose logs -f db
+  docker compose logs -f web
+  ```
 
 - To remove and recreate the database volume (data will be lost):
 
-  docker-compose down -v
+  ```bash
+  docker compose down -v
+  ```
 
 ## Security notes
 

@@ -1,6 +1,6 @@
 # Lesson Plan: Containerization Fundamentals with Docker
 
-This lesson plan is designed for an undergraduate course in Software Engineering or DevOps. It covers the conceptual "Why," the technical "How," and multi-container orchestration using the dstrimble-example-project.
+This lesson plan is designed for an undergraduate course in Software Engineering or DevOps. It covers the conceptual "Why," the technical "How," and multi-container orchestration using the javascript-example-project.
 
 ---
 
@@ -183,17 +183,17 @@ Now compare this to Part 3. With one command, Compose handles:
 
 ```bash
 # Start the full stack automatically
-docker-compose up -d
+docker compose up -d
 ```
 
 ```bash
 # Check status
-docker-compose ps
+docker compose ps
 ```
 
 ```bash
 # Shut down everything
-docker-compose down
+docker compose down
 ```
 
 ### 4.3 Why Compose Matters
@@ -204,7 +204,7 @@ Compare Part 3 (manual, 11 commands) with Part 4 (Compose, 1 command). You now u
 - **Service discovery:** Services find each other by name automatically
 - **Environment variables:** Defined once in the YAML
 - **Dependency management:** `depends_on` ensures proper startup order
-- **Cleanup:** One `docker-compose down` stops and removes everything
+- **Cleanup:** One `docker compose down` stops and removes everything
 
 ---
 

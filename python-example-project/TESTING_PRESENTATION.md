@@ -545,7 +545,7 @@ A third job builds and smoke-tests the Docker image; `CICD_PRESENTATION.md` cove
 
 ## The same lesson in JavaScript `⏱ 1 min`
 
-`dstrimble-example-project` is the same app and the same three layers:
+`javascript-example-project` is the same app and the same three layers:
 
 | | Python | Node |
 |---|---|---|

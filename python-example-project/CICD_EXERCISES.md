@@ -72,19 +72,25 @@ docker rm app
 Now run it again with a different host port, and log in with `curl`:
 
 ```bash
-docker run -d --rm --name app -p 8080:8000 python-example-project
-curl -i -X POST http://localhost:8080/api/login \
+docker run -d --rm --name app -p 8081:8000 python-example-project
+curl -i -X POST http://localhost:8081/api/login \
   -H 'Content-Type: application/json' \
   -d '{"username":"admin","password":"password"}'
-docker stop app                   # --rm deletes it as soon as it stops
 ```
 
+Leave this container running for the questions, then stop it with `docker stop app` (`--rm` deletes
+it as soon as it stops).
+
+If `docker run` says the port is already allocated, or `curl` gets a `404` from a server that isn't
+Flask (look at the `Server:` header), something else on your laptop owns that port. Pick another one,
+such as `-p 8082:8000`, and use it in every URL below.
+
 **Questions**
-1. In `-p 8080:8000`, which number is on your laptop and which is inside the container?
+1. In `-p 8081:8000`, which number is on your laptop and which is inside the container?
    Does `curl http://localhost:8000/` work with that mapping? Why?
 2. What does `-d` do? Run the container once without it: what happens to your terminal, and how do you get it back?
 3. The login response has a `Set-Cookie` header. Copy the cookie and use it:
-   `curl -i --cookie 'token=...' http://localhost:8080/api/widgets`. What do you get without it?
+   `curl -i --cookie 'token=...' http://localhost:8081/api/widgets`. What do you get without it?
 4. `docker logs` starts with a red WARNING. What is it, and where in the CI pipeline would you want it gone?
    (You'll come back to this in Exercise 4.2.)
 

@@ -49,7 +49,7 @@ automatically; the Playwright config sets it for the server it launches.
 ## Pre-class checklist (5 minutes, do this the day before too)
 
 ```bash
-cd dstrimble-example-project
+cd javascript-example-project
 npm install
 npx playwright install chromium     # one-time browser download, ~150 MB
 git status                          # must be clean: the demos edit files and you restore with git
@@ -675,5 +675,5 @@ or Demos 1, 4a-b, and 6 if the session is about TDD.
 5. Add an E2E test that a second browser tab (a new Playwright `context`) is *not* logged in.
 6. Run the integration tests against real Postgres from `docker-compose.yml` instead of the fake,
    and discuss what that would cost in CI time.
-7. Look at `.github/workflows/ci.yml`: the E2E job only runs if the fast job passes, and the
+7. Look at `.github/workflows/node.yml`: the E2E job only runs if the fast job passes, and the
    coverage table lands in the job summary. Argue for or against that ordering.

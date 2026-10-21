@@ -3,7 +3,7 @@
 Capture these screenshots after the app is deployed.
 
 1. `step-07-app-login-page-port-forward.png`
-   What to capture: Browser open to `http://localhost:3000` after `kubectl -n dstrimble-local port-forward svc/web 3000:3000` is running.
+   What to capture: Browser open to `http://localhost:3000` after `kubectl -n javascript-example port-forward svc/web 3000:3000` is running.
 
 2. `step-08-app-after-login-port-forward.png`
    What to capture: Browser after logging in with username `admin` and password `password` through `http://localhost:3000`.

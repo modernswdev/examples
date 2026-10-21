@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: app-secret
-  namespace: dstrimble-local
+  namespace: javascript-example
 type: Opaque
 stringData:
   POSTGRES_USER: example
@@ -14,7 +14,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: app-config
-  namespace: dstrimble-local
+  namespace: javascript-example
 data:
   POSTGRES_HOST: postgres
   POSTGRES_PORT: "5432"
@@ -24,7 +24,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web
-  namespace: dstrimble-local
+  namespace: javascript-example
 spec:
   replicas: 1
   selector:
@@ -37,7 +37,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: dstrimble-example-project:local
+          image: javascript-example-project:local
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
@@ -63,7 +63,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: web
-  namespace: dstrimble-local
+  namespace: javascript-example
 spec:
   selector:
     app: web
