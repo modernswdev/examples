@@ -483,12 +483,12 @@ its own runs, and its own `main` to protect.
 
 ## 3.1 Fork, enable Actions, and run a first workflow ★
 
-1. Fork `dstrimble-ualr/modern-software-dev` on GitHub and clone your fork.
+1. Fork `modernswdev/examples` on GitHub and clone your fork.
 2. Point `gh` at **your fork**, not the class repo. In a clone of a fork, `gh pr create` otherwise opens
    the PR on the class repo, and several exercises below open PRs with broken code on purpose:
 
    ```bash
-   gh repo set-default <you>/modern-software-dev
+   gh repo set-default <you>/examples
    gh repo set-default --view                  # should print your fork
    ```
 
@@ -544,7 +544,7 @@ Change the deploy job's `if:` so that it runs only on `main` **of the class repo
 
 1. On a branch, break the login rule in [app/auth_utils.py](app/auth_utils.py): change `and` to `or` in
    `has_login_fields`.
-2. Push and open a PR **into your fork's `main`** (`gh pr create --fill`; check the URL it prints has your username in it, not `dstrimble-ualr`).
+2. Push and open a PR **into your fork's `main`** (`gh pr create --fill`; check the URL it prints has your username in it, not `modernswdev`).
 3. Read the failure, in this order: which job, which step, then the last lines of that step's log.
 4. Try `gh run view --log-failed` for the same run.
 

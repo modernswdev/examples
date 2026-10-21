@@ -1,4 +1,4 @@
-# modern-software-dev
+# examples
 
 Teaching examples for the Modern Software Development course. Two versions of the same
 small app, each with unit, integration, and end-to-end tests, coverage tooling, CI, a
