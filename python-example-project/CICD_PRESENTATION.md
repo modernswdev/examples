@@ -133,7 +133,7 @@ Show the real job times on the Actions tab. On the first deploy: 12–22 s, 36 s
 ## Where the file lives (optional) `⏱ 1 min`
 
 ```
-modern-software-dev/                 ← the GitHub repo
+examples/                            ← the GitHub repo
 ├── .github/workflows/
 │   ├── node.yml                     ← the Node project's pipeline
 │   ├── python.yml                   ← ours
