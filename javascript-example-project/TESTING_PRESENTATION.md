@@ -5,7 +5,7 @@ paginate: true
 
 # Automated Testing: Unit, Integration, End-to-End
 
-### A walk through `dstrimble-example-project`
+### A walk through `javascript-example-project`
 
 45 minutes. One small app, three kinds of tests, and the code that makes them possible.
 
@@ -537,7 +537,7 @@ bug, but it would trust your mock to behave like the real server. E2E trusts not
 
 ## How this runs in CI `⏱ 1 min`
 
-`.github/workflows/ci.yml`, two jobs:
+`.github/workflows/node.yml`, two jobs:
 
 ```
 fast-tests  (Jest)            e2e-tests  (Playwright)

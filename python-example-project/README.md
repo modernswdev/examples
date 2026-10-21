@@ -1,7 +1,7 @@
 # python-example-project
 
 A small Flask app with cookie-based login and a widgets page, built for teaching
-automated testing in Python. It is the Python twin of `dstrimble-example-project`
+automated testing in Python. It is the Python twin of `javascript-example-project`
 (Node.js): same front end, same API, same three test layers.
 
 ## Tech stack

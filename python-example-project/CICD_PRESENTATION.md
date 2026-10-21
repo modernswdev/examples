@@ -138,7 +138,7 @@ examples/                            ← the GitHub repo
 │   ├── node.yml                     ← the Node project's pipeline
 │   ├── python.yml                   ← ours
 │   └── python-load-test.yml         ← the load-test button
-├── dstrimble-example-project/
+├── javascript-example-project/
 └── python-example-project/
 ```
 

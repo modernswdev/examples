@@ -4,7 +4,7 @@ A live teaching script for a class session on automated testing, using this repo
 Every command and every expected output below was run against this exact code, so
 if you follow the steps you will see what the script says you will see.
 
-This is the Python twin of the Node.js playbook in `dstrimble-example-project`. The
+This is the Python twin of the Node.js playbook in `javascript-example-project`. The
 app, the API, the front end, and the demos are the same. The tools differ, and so
 does one detail of how coverage is counted, which is called out in Demo 4.
 
@@ -676,5 +676,5 @@ or Demos 1, 4a-b, and 6 if the session is about TDD.
 5. Write a test that calls every function in `app/auth_utils.py` but asserts nothing. Show it
    gets 100% coverage. Discuss what that number is worth.
 6. Add an E2E test that a second browser context is *not* logged in.
-7. Look at `.github/workflows/ci.yml`: the E2E job only runs if the fast job passes, and the
+7. Look at `.github/workflows/python.yml`: the E2E job only runs if the fast job passes, and the
    coverage table lands in the job summary. Argue for or against that ordering.

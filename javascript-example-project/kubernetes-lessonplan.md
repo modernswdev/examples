@@ -101,8 +101,8 @@ Checkpoint:
 From the project root, run:
 
 ```bash
-docker build -t dstrimble-example-project:local .
-docker images | grep dstrimble-example-project
+docker build -t javascript-example-project:local .
+docker images | grep javascript-example-project
 ```
 
 Checkpoint:
@@ -116,13 +116,13 @@ Run:
 ```bash
 kubectl apply -f k8s/namespace.yaml
 kubectl apply -f k8s/postgres.yaml
-kubectl -n dstrimble-local rollout status deploy/postgres
+kubectl -n javascript-example rollout status deploy/postgres
 ```
 
 Validate:
 
 ```bash
-kubectl -n dstrimble-local get pods,svc,pvc
+kubectl -n javascript-example get pods,svc,pvc
 ```
 
 Checkpoint:
@@ -136,8 +136,8 @@ Run:
 
 ```bash
 kubectl apply -f k8s/app.yaml
-kubectl -n dstrimble-local rollout status deploy/web
-kubectl -n dstrimble-local get pods,svc
+kubectl -n javascript-example rollout status deploy/web
+kubectl -n javascript-example get pods,svc
 ```
 
 Checkpoint:
@@ -148,7 +148,7 @@ Checkpoint:
 Quick browser test with port-forward:
 
 ```bash
-kubectl -n dstrimble-local port-forward svc/web 3000:3000
+kubectl -n javascript-example port-forward svc/web 3000:3000
 ```
 
 Leave that terminal window running, then open http://localhost:3000.
@@ -191,7 +191,7 @@ Run:
 
 ```bash
 kubectl apply -f k8s/ingress.yaml
-kubectl -n dstrimble-local get ingress
+kubectl -n javascript-example get ingress
 ```
 
 Open http://localhost in your browser.
@@ -223,17 +223,17 @@ Checkpoint:
 Run these checks in order:
 
 ```bash
-kubectl -n dstrimble-local get all
-kubectl -n dstrimble-local describe pod -l app=web
-kubectl -n dstrimble-local describe pod -l app=postgres
-kubectl -n dstrimble-local logs deploy/web
-kubectl -n dstrimble-local logs deploy/postgres
+kubectl -n javascript-example get all
+kubectl -n javascript-example describe pod -l app=web
+kubectl -n javascript-example describe pod -l app=postgres
+kubectl -n javascript-example logs deploy/web
+kubectl -n javascript-example logs deploy/postgres
 kubectl -n ingress-nginx logs deploy/ingress-nginx-controller
 ```
 
 Common issues:
 
-- Image not found: rebuild as dstrimble-example-project:local
+- Image not found: rebuild as javascript-example-project:local
 - Web pod crash looping: verify Postgres values in k8s/app.yaml
 - PVC Pending: check local disk availability and storage class
 - Ingress test fails: verify ingress controller readiness; if needed, use the localhost:8080 port-forward fallback in Step 6
